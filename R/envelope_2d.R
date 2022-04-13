@@ -133,7 +133,7 @@ envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
   rbPal <- colorRampPalette(colorBlindness::ModifiedSpectralScheme11Steps)
 
   if (!isFALSE(col_rev)) {
-    rbPal <- rev(colorRampPalette(colorBlindness::ModifiedSpectralScheme11Steps))
+    rbPal <- colorRampPalette(rev(colorBlindness::ModifiedSpectralScheme11Steps))
   }
 
   coo$Col <- rbPal(1000)[as.numeric(cut(coo$PC1, breaks = 1000))]
