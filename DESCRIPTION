@@ -1,0 +1,20 @@
+Package: envelopeR
+Type: Package
+Title: Plotting species envelopes with R   
+Version: 0.1.0
+Authors@R: 
+    person("Elia", "Vajana", , "vajana.elia@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-1340-3389")) 
+Description: A collection of R functions to represent species geographic distributions and their environmental envelopes.
+License: use_gpl3_license()
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 4.1.2)
+Imports: 
+    rgdal, 
+    raster,
+    rnaturalearth,
+    prettymapr,
+    colorBlindness,
+    MASS
+RoxygenNote: 7.1.2
