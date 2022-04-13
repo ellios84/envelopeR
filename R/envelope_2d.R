@@ -17,6 +17,9 @@
 #' @param density Logical indicating whether or not density is to be estimated for the bi-dimensional envelope.
 #' @param a_lab Label for the left figure (default: "(a)").
 #' @param b_lab Label for the right figure (default: "(b)").
+#' @param cell_cex The size of the points in figure (a) and (b).
+#' @param col_rev Logical indicating whether the color gradient is to be reversed or not (default: FALSE).
+#' @param env2_lab_line A number stating the distance \eqn{env2_lab} should be placed from the Y-axis in figure (b) (default: 2.8; this number should not exceed 5).
 #'
 #' @details All geographic objects need to have the same CRS. Moreover, \eqn{env1} and \eqn{env2} need an equal resolution and origin. The geographic distribution is colored following a \eqn{ModifiedSpectralScheme11Steps} scheme from the \eqn{colorBlindness} R package. To obtain the color gradient, a PCA is carried out on the values from \eqn{env1} and \eqn{env2} and colors are calibrated on PC1. The obtained gradient is used to represent habitat conditions in the geographic and environmental space (left and right figure, respectively).
 #'
@@ -30,10 +33,10 @@ envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
                         figname="envelope_2d", scale_pos="bottomright",
                         lon_min=NULL, lon_max=NULL,
                         lat_min=NULL, lat_max=NULL, density=FALSE,
-                        a_lab="(a)", b_lab="(b)") {
+                        a_lab="(a)", b_lab="(b)", cell_cex=0.1,
+                        col_rev=FALSE, env2_lab_line=2.8) {
 
   cat("\n"); cat("... loading the required R packages .................. ")
-  cat("\n")
   if(!require(rgdal, quietly = T)) install.packages("rgdal")
   if(!require(raster, quietly = T)) install.packages("raster")
   if(!require(rnaturalearth, quietly = T)) install.packages("rnaturalearth")
@@ -128,6 +131,9 @@ envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
   coo <- cbind.data.frame(coo, pca)
 
   rbPal <- colorRampPalette(colorBlindness::ModifiedSpectralScheme11Steps)
+
+  if (isTRUE(col_rev)) rbPal <- rev(colorRampPalette(colorBlindness::ModifiedSpectralScheme11Steps))
+
   coo$Col <- rbPal(1000)[as.numeric(cut(coo$PC1, breaks = 1000))]
   cat("\n"); cat("... characterization of the envelope  ................ DONE ")
   cat("\n")
@@ -138,10 +144,9 @@ envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
   coast<-rnaturalearth::ne_coastline(scale = "medium", returnclass = c("sp", "sf"))
 
   cat("\n"); cat("... plotting niche_2d figure ......................... ")
-  cat("\n")
   postscript(paste0(figname, ".eps"), width = 12, height = 6)
-  par(mar=c(1, 0, 1, 0), mfrow = c(1, 2),oma=c(3, 5, 3, 5), mgp=c(1.9, 0.9, 0))
-  plot(coo$x, coo$y, col=coo$Col, xlab="", ylab="", pch=16, cex=.1, las=1,
+  par(mar=c(1, 0, 1, 0), mfrow = c(1, 2), oma=c(3, 5, 3, 5), mgp=c(1.9, 0.9, 0))
+  plot(coo$x, coo$y, col=coo$Col, xlab="", ylab="", pch=16, cex=cell_cex, las=1,
        cex.axis=1.1, xlim=c(extent_all[1], extent_all[2]),
        ylim=c(extent_all[3], extent_all[4]))
   raster::plot(coast, add=T, lwd=.5, col="gray23")
@@ -154,7 +159,7 @@ envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
 						  label.col = "black", pos = scale_pos)
   box(lwd=2)
 
-  plot(coo$env1, coo$env2, pch=16, cex=.1, col=coo$Col, yaxt="n",
+  plot(coo$env1, coo$env2, pch=16, cex=cell_cex, col=coo$Col, yaxt="n",
        xlab="", ylab="")
   if (density) {
     dens <- MASS::kde2d(coo$env1, coo$env2)
@@ -172,7 +177,7 @@ envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
   mtext(text = "Longitude", side = 1, line = 1.8, outer = T, at = .25, cex = 1.5)
   mtext(text = "Latitude", side = 2, line = 2.8, outer = T, at = .5, cex = 1.5)
   mtext(text = env1_lab, side = 1, line = 1.8, outer = T, at = .75, cex = 1.5)
-  mtext(text = env2_lab, side = 4, line = 2.8, outer = T, at = .5, cex = 1.5)
+  mtext(text = env2_lab, side = 4, line = env2_lab_line, outer = T, at = .5, cex = 1.5)
   mtext(text = a_lab, side = 3, line = -.5, outer = T, at = 0.02, cex = 1.5)
   mtext(text = b_lab, side = 3, line = -.5, outer = T, at = 0.52, cex = 1.5)
 
