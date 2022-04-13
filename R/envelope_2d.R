@@ -32,14 +32,14 @@ envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
                         lat_min=NULL, lat_max=NULL, density=FALSE,
                         a_lab="(a)", b_lab="(b)") {
 
-  #cat("\n"); cat("... loading the required R packages .................. ")
-  #if(!require(rgdal, quietly = T)) install.packages("rgdal")
-  #if(!require(raster, quietly = T)) install.packages("raster")
-  #if(!require(rnaturalearth, quietly = T)) install.packages("rnaturalearth")
-  #if(!require(prettymapr, quietly = T)) install.packages("prettymapr")
-  #if(!require(colorBlindness, quietly = T)) install.packages("colorBlindness")
-  #if(!require(MASS, quietly = T)) install.packages("MASS")
-  #cat("DONE"); cat("\n")
+  cat("\n"); cat("... loading the required R packages .................. ")
+  if(!require(rgdal, quietly = T)) install.packages("rgdal")
+  if(!require(raster, quietly = T)) install.packages("raster")
+  if(!require(rnaturalearth, quietly = T)) install.packages("rnaturalearth")
+  if(!require(prettymapr, quietly = T)) install.packages("prettymapr")
+  if(!require(colorBlindness, quietly = T)) install.packages("colorBlindness")
+  if(!require(MASS, quietly = T)) install.packages("MASS")
+  cat("DONE"); cat("\n")
 
   # loading shapefiles
   cat("\n"); cat("... loading the species' spatial distribution ........ ")
