@@ -13,7 +13,7 @@ envelope_2d(
   samp = NULL,
   env1_lab = NULL,
   env2_lab = NULL,
-  figname = "niche_2d",
+  figname = "envelope_2d",
   scale_pos = "bottomright",
   lon_min = NULL,
   lon_max = NULL,
@@ -21,7 +21,10 @@ envelope_2d(
   lat_max = NULL,
   density = FALSE,
   a_lab = "(a)",
-  b_lab = "(b)"
+  b_lab = "(b)",
+  cell_cex = 0.1,
+  col_rev = FALSE,
+  env2_lab_line = 2.8
 )
 }
 \arguments{
@@ -58,6 +61,12 @@ envelope_2d(
 \item{a_lab}{Label for the left figure (default: "(a)").}
 
 \item{b_lab}{Label for the right figure (default: "(b)").}
+
+\item{cell_cex}{The size of the points in figure (a) and (b).}
+
+\item{col_rev}{Logical indicating whether the color gradient is to be reversed or not (default: FALSE).}
+
+\item{env2_lab_line}{A number stating the distance \eqn{env2_lab} should be placed from the Y-axis in figure (b) (default: 2.8; this number should not exceed 5).}
 }
 \value{
 A \eqn{data.frame} object reporting the environmental information for the species distribution. Each line reports a georeferenced cell with resolution derived from \eqn{env1} and \eqn{env2}. Furthermore, a figure is printed in the working directory reporting the species distribution on the left and the bi-dimensional envelope on the right.
