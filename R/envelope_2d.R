@@ -33,6 +33,7 @@ envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
                         a_lab="(a)", b_lab="(b)") {
 
   cat("\n"); cat("... loading the required R packages .................. ")
+  cat("\n")
   if(!require(rgdal, quietly = T)) install.packages("rgdal")
   if(!require(raster, quietly = T)) install.packages("raster")
   if(!require(rnaturalearth, quietly = T)) install.packages("rnaturalearth")
@@ -137,6 +138,7 @@ envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
   coast<-rnaturalearth::ne_coastline(scale = "medium", returnclass = c("sp", "sf"))
 
   cat("\n"); cat("... plotting niche_2d figure ......................... ")
+  cat("\n")
   postscript(paste0(figname, ".eps"), width = 12, height = 6)
   par(mar=c(1, 0, 1, 0), mfrow = c(1, 2),oma=c(3, 5, 3, 5), mgp=c(1.9, 0.9, 0))
   plot(coo$x, coo$y, col=coo$Col, xlab="", ylab="", pch=16, cex=.1, las=1,
