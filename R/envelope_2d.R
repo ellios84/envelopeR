@@ -19,7 +19,7 @@
 #' @param b_lab Label for the right figure (default: "(b)").
 #' @param cell_cex The size of the points in figure (a) and (b).
 #' @param col_rev Logical indicating whether the color gradient is to be reversed or not (default: FALSE).
-#' @param env2_lab_line A number stating the distance \eqn{env2_lab} should be placed from the Y-axis in figure (b) (default: 2.8; this number should not exceed 5).
+#' @param env2_lab_line A number stating the distance \eqn{env2_lab} should be placed from the Y-axis in figure (b) (default: 2.8; this number should not exceed 3.9).
 #'
 #' @details All geographic objects need to have the same CRS. Moreover, \eqn{env1} and \eqn{env2} need an equal resolution and origin. The geographic distribution is colored following a \eqn{ModifiedSpectralScheme11Steps} scheme from the \eqn{colorBlindness} R package. To obtain the color gradient, a PCA is carried out on the values from \eqn{env1} and \eqn{env2} and colors are calibrated on PC1. The obtained gradient is used to represent habitat conditions in the geographic and environmental space (left and right figure, respectively).
 #'
@@ -132,7 +132,9 @@ envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
 
   rbPal <- colorRampPalette(colorBlindness::ModifiedSpectralScheme11Steps)
 
-  if (isTRUE(col_rev)) rbPal <- rev(colorRampPalette(colorBlindness::ModifiedSpectralScheme11Steps))
+  if (!isFALSE(col_rev)) {
+    rbPal <- rev(colorRampPalette(colorBlindness::ModifiedSpectralScheme11Steps))
+  }
 
   coo$Col <- rbPal(1000)[as.numeric(cut(coo$PC1, breaks = 1000))]
   cat("\n"); cat("... characterization of the envelope  ................ DONE ")
