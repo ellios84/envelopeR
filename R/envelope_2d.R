@@ -27,7 +27,7 @@
 envelope_2d <- function(shape=NULL, point1=NULL, point2=NULL,
                         env1=NULL, env2=NULL, samp=NULL,
                         env1_lab=NULL, env2_lab=NULL,
-                        figname="niche_2d", scale_pos="bottomright",
+                        figname="envelope_2d", scale_pos="bottomright",
                         lon_min=NULL, lon_max=NULL,
                         lat_min=NULL, lat_max=NULL, density=FALSE,
                         a_lab="(a)", b_lab="(b)") {
