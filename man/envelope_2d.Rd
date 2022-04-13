@@ -66,7 +66,7 @@ envelope_2d(
 
 \item{col_rev}{Logical indicating whether the color gradient is to be reversed or not (default: FALSE).}
 
-\item{env2_lab_line}{A number stating the distance \eqn{env2_lab} should be placed from the Y-axis in figure (b) (default: 2.8; this number should not exceed 5).}
+\item{env2_lab_line}{A number stating the distance \eqn{env2_lab} should be placed from the Y-axis in figure (b) (default: 2.8; this number should not exceed 3.9).}
 }
 \value{
 A \eqn{data.frame} object reporting the environmental information for the species distribution. Each line reports a georeferenced cell with resolution derived from \eqn{env1} and \eqn{env2}. Furthermore, a figure is printed in the working directory reporting the species distribution on the left and the bi-dimensional envelope on the right.
