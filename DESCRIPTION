@@ -11,10 +11,10 @@ Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.1.2)
 Imports: 
-    rgdal, 
-    raster,
-    rnaturalearth,
+    colorBlindness, 
+    MASS,
     prettymapr,
-    colorBlindness,
-    MASS
+    raster,
+    rgdal,
+    rnaturalearth
 RoxygenNote: 7.1.2
