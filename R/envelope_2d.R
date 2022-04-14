@@ -17,9 +17,9 @@
 #' @param density Logical indicating whether or not density is to be estimated for the bi-dimensional envelope.
 #' @param a_lab Label for the left figure (default: "(a)").
 #' @param b_lab Label for the right figure (default: "(b)").
-#' @param cell_cex The size of the points in figure \eqn{a} and \eqn{b}.
+#' @param cell_cex The size of the points in figure a and b.
 #' @param col_rev Logical indicating whether the color gradient is to be reversed or not (default: FALSE).
-#' @param env2_lab_line A number stating the distance \eqn{env2_lab} should be placed from the Y-axis in figure \eqn{b} (default: 2.8; this number should not exceed 3.9).
+#' @param env2_lab_line A number stating the distance \eqn{env2_lab} should be placed from the Y-axis in figure b (default: 2.8; this number should not exceed 3.9).
 #'
 #' @details All geographic objects need to have the same CRS. Moreover, \eqn{env1} and \eqn{env2} need an equal resolution and origin. The geographic distribution is colored following a \eqn{ModifiedSpectralScheme11Steps} scheme from the \eqn{colorBlindness} R package. To obtain the color gradient, a PCA is carried out on the values from \eqn{env1} and \eqn{env2} and colors are calibrated on PC1. The obtained gradient is used to represent habitat conditions in the geographic and environmental space (left and right figure, respectively).
 #'
