@@ -1,4 +1,4 @@
-#' Derive and visualize a species' bi-dimensional envelope
+#' Derive and visualize the bi-dimensional envelope of a species
 #'
 #' @param shape  Optional path to an ESRI shapefile representing the species distribution (\eqn{SpatialPolygonsDataFrame}).
 #' @param point1 Optional path to an ESRI shapefile representing isolated populations not included in \eqn{shape} (\eqn{SpatialPointsDataFrame}).
