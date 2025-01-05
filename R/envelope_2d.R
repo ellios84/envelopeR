@@ -1,4 +1,4 @@
-#' Visualizing the bidimensional envelope of a species
+#' Visualizing the bi-dimensional (2D) envelope of a species
 #'
 #' @param shape  Optional path to an ESRI shapefile (\eqn{.shp}) representing the species distribution as a polygon (\eqn{SpatialPolygonsDataFrame}).
 #' @param env1 Raster object describing the first environmental variable to be used to characterize the bi-dimensional envelope (X-axis).
